@@ -1,0 +1,991 @@
+how to decide when to use var or let ? hint ; hoisting
+
+4jun
+
+entities in a program always have an associated type
+
+what is a literal?
+
+give examples of int type in py ?
+
+what is an expression?
+
+the decimal point differentiates a float from an int when using literals
+
+computers knows 0 and 1
+
+computers use binary system aka base 2
+
+when we use floats we don't have exact representations very often 
+
+be careful comparing floats one another
+
+there is a data type that can handle exact representation of decimal numbers which is decimal
+
+decimal : not efficient as float both from a memory storage standpoint and from a computation standpoint
+
+calculations in decimal are much slower than floats and take more space than floats
+
+0.1 don't have an exact representation
+
+printing a float (0.1) in python , return a string 0.1 which is not the exact representation of 0.1 but python prettify the result (0.999999999....) and round it (0.1)
+
+what is the format function ?
+
+don't compare floats using equality (hint:use abs(diff) and compare < to tolerance (0.001)) (depends on numbers tolerance can be much bigger than 0.001)
+
+----------------------------------------------------------------
+Objects:
+
+what are objects?
+entities created by python
+-they have state(data)
+-they have methods (functionality)
+
+integers itself is an object!
+
+the state is the value of the integer
+and also has functionality
+(10).__add__(100) -> 110
+called Dunder methods , special methods 
+
+same for floats 
+everything in python is an object
+any datatype
+
+how to access object attribute?
+
+
+mutability and immutability:
+an object is mutable if it's internal state can be changed
+one or more data attributes can be changed
+
+an object is immutable if it's internal state cannot be changed
+the state of the object is "set in stone"
+
+immutable types :
+integers
+floats
+booleans
+strings
+....
+
+mutable types : 
+lists
+dictionaries
+sets
+...
+
+------------------------------------------------------------------
+variables:
+what are variables ?
+
+what is the assignment operator
+account_balance = 1000.0
+apy = 0.25
+we are assigning the label apy to the object 0.25
+we say apy is a reference to the float object 0.25
+the symbol apy is just a label currently pointing to (or referencing) the object 0.25
+
+apy = 0.25 
+LHS    RHS
+apy is the label and 0.25 is the object
+python evaluates RHS first
+then it assigns that result to the symbol in the LHS
+
+variables naming conventions : 
+case sensitive apr # APR
+examples : var my_var index_1 index1
+
+PEP8 style guide : 
+terminology : separate words are distinguished by upper case letters : accountBalance BankAccount
+
+snake casing : separate words are distinguished by under score
+account_balance 
+
+should follow conventions : snake case : bank_account
+for classes we use camel case Account_Balance
+--------------------------------------------------------------------------------------------------------------------------
+5jun
+arithmetic operators
+
+
+what is an operator and what are there types ?
+
+unary vs binary vs ternary operators !
+
+float division vs integer division
+
+what is a complex ?
+
+what is type function ??
+
+can we modify the dunder method of the object __add__ for example ?
+
+what does it mean operator precedence ?
+
+precedence order with arithmetic operators
+lower binary + -
+.            * /
+.     unary  + -
+.            **  except for a unary operator to the right of **    -2 ** 4 -> - (2**4) -> -16 
+								   the exception 2 ** -3 -> 2 ** (-3) -> 0.125
+. higher
+
+
+advice always use parentheses , don't trust precedence too much
+
+
+--------------------------------------------------------------------------------------------------------------------------
+integer division and modulus operator
+
+what is integer division in python ? // 
+in reality integer div is the floor of a/b
+
+for the remainder we can the modulus operator %
+
+(a % b) = a - b (a // b) 
+
+-------------------------------------------------------------------------------------------------------------------------
+comparison operators 
+
+
+what are comparison operators (relational)?
+what result ? bool
+
+does int and float types are comparable to each other ?
+
+10 <= 10.9 -> True
+
+floats are different story 
+0.1 + 0.1 + 0.1 == 0.3  -> False 
+
+what does it mean for two objects to be equal ?
+1 is an int , 1.0 is a float 
+are 1 and 1.0 the same object (is) ? No     but 1 == 1.0
+what equality means ?
+identity vs value equality !!
+value equality (==) 
+identity equality (is)
+
+
+the is operator is purely concerned with the memory address(identity) of the objects
+
+other operators : 
+membership operator : in and not in
+work with collection types
+a = 10
+b = 10
+a is b --> True 
+for optimization reason 
+id(a) # id(b)
+
+a = 10_000
+b = 10_000
+a is b -> False
+
+
+!= operator 
+
+
+for custom objects we use from a class , python by default uses identity comparison for the equality  
+
+--------------------------------------------------------------------------------------------------------------------------
+boolean operators
+
+True and False 
+
+three basic operator and or not
+
+not is a unary operator 
+
+short circuited Evaluation :
+a or b : if a is True , then the result is True
+a and b : if a is False , then the result is False 
+
+------------------------------------------------------------------------------------------------------------------------
+3rd session 
+
+Conditional execution 
+if else statement
+
+branching 
+
+the if statement 
+
+indentation 
+
+else clause
+
+nesting if statement 
+
+-------------------------------------------------------------------------------------------------------------------------
+elif
+
+elif clause 
+
+elif solve the problem of nested if else clause 
+
+
+-------------------------------------------------------------------------------------------------------------------------
+ternary conditional operator 
+
+how it uses short circuited evaluation
+
+-------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
+4rd session
+
+
+what is a sequence
+
+sequences are objects
+
+finite sequences 
+
+Homogeneous vs Heterogeneous Sequences
+
+lists ---- mutable(add remove replace elements) Heterogeneous
+tuples ---- immutable Heterogeneous
+strings ---- immutable Homogeneous
+
+---------------------------------------------------------------------------------------------------------------------
+lists 
+
+
+how to create lists ?
+
+the len function 
+
+empty list l=[]
+
+there is a function in python that creates an empty list ! list()
+
+ 
+---------------------------------------------------------------------------------------------------------------------
+Tuples
+
+once a tuple is created you can not add remove replace elements
+
+how to create tuples ? using literals
+
+we can write : t = (10 , 20 , 30)
+or just :  t = 10 , 20 , 30
+
+creating an empty tuple is not useful because it will remain empty !!
+
+transforming a tuple to a list and vis versa
+
+l = [1,2,3]
+t = tuple(l)
+
+t = 1,2,3
+l = list(t)
+useful when you want to mutate a tuple!!!!!!
+
+---------------------------------------------------------------------------------------------------------------------
+Strings
+
+
+the str type 
+
+how to create strings ?
+
+'this is a string'
+
+an escape character \
+
+---------------------------------------------------------------------------------------------------------------------
+Slicing
+
+what is slicing : a way to extract ranges of elements from a sequence
+
+[start:stop]
+start inclusive , stop exclusive
+and return same type
+
+s[:] : shallow copy of a sequence
+
+slicing with steps : s[start,stop,step]
+
+s[::-1] reverse the sequence!
+
+---------------------------------------------------------------------------------------------------------------------
+Manipulating Sequences for mutable sequences only for lists
+
+replace delete add(append at end / insert where)
+
+
+we can replace an entire slice : 
+
+how to delete an element from a list : hint(by index)
+
+we can delete an entire slice
+
+how we append element!!
+
+append method is # than extend method !!!
+
+append multiple elements : it's called extending
+extending means adding them as individual elements
+extending by list , tuple , string is the same !
+
+we can insert an element in some index !!
+
+adding an element to end of a sequence is very fast , but adding something to a middle of a sequence is much slower !!
+
+
+timeit function in the timeit module
+from timeit import timeit
+
+---------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+copying sequences
+
+shallow vs deep copies
+
+shallow : 
+new sequence
+the elements in new sequences will be referencing same elements as original
+
+adding/remove/replace elements in one does not affect the other 
+but mutating an element will affect both(since it's a shared reference)
+
+how to create shallow copy : my_list[:] , my_list.copy()
+
+deep copies : 
+new sequence 
+everything is a copy, totally new and independent objects	
+
+how to create a deep copy
+uses deepcopy function in the copy module
+from copy import deepcopy
+
+use shallow copy but only if we have to use deep copy , they are expensive in memory!
+
+---------------------------------------------------------------------------------------------------------------------
+unpacking sequences
+
+data = (1,2,3)
+data is a tuple
+
+to assign value to 1,2,3 to some symbols a,b,c
+could do this : 
+	a = data[0]
+	b = data[1]
+	c = data[2]
+	
+python has a better way of doing this :
+a , b , c = (1,2,3)
+
+swapping : 
+intial state : a = 10
+	       b = 20
+end state : a = 20
+	    b = 10
+in other languages : we need a temp 
+
+in python : a , b = b , a
+
+---------------------------------------------------------------------------------------------------------------------
+Strings
+5th session
+
+immutable homogeneous , each element is a single character
+
+they have additional functionality 
+
+---------------------------------------------------------------------------------------------------------------------
+unicode
+
+in the begening there was ASCII
+supported character set was limited
+
+unicode is just assigning a code to a character 
+
+decimal is base 10
+hexadecimal is base 16
+
+decimal uses powers of 10
+binary uses powers of 2
+hexadecimal uses powers of 16
+
+ord() function in python returns code point for a single character	(in decimal)
+ord('A') = 65
+
+hex converts decimal to hex string
+hex(65) = '0*41'
+
+we can specify the character in a string other way using:
+using escape codes
+by hex code  ,by name
+"\N{Greek Small Letter Alpha}" -> "α"
+
+"\u03b1" -> "α" only 4 digits after u or use upper case U
+
+---------------------------------------------------------------------------------------------------------------------
+Common String methods 
+
+case conversion
+stripping start and end character
+concatenating strings
+splitting and joining strings
+finding substrings
+
+this operation never mutates the string , it always return a new string
+
+lower()
+upper()
+title()
+
+care when comparing two string using .lower method for both !!
+use casefold for equality
+
+stripping
+lstrip
+rstrip
+strip
+can specify what character to strip
+
+concatenation 
+combining multiple strings
+'hello'+' '+'world'
+
+splitting strings
+data = '100,200,300,400'
+data.split(',') -> list
+
+joining strings 
+data = ('ab','cd','ef')
+'--'.join(data)
+->  'ab--cd--ef'
+
+
+finding substrings
+'x' in 'xyz'
+'a' in 'xyz'
+
+startswith('...')
+endswith('...')
+
+
+finding the index of a substring
+the index of a start position in a substring
+index method
+value error when substring is not found
+
+if we don't want an exception we use the find method which returns -1 when the substring is not found
+find is limited to strings 
+index is better because it apply to sequences
+
+
+---------------------------------------------------------------------------------------------------------------------
+String interpolation (two techniques)
+
+'test' + 100 ->type error 
+
+but 
+'test' + str(100) -> test100
+
+the format method
+
+
+fstring
+f'test' + {100} -> test100
+
+---------------------------------------------------------------------------------------------------------------------
+next session
+
+iteration
+
+deterministic for loop
+non deterministic while loop
+
+
+not all iterable are sequences , for example a bag of marbles is iterable, but it is not a sequence!
+
+
+---------------------------------------------------------------------------------------------------------------------
+the range function 
+
+the range object is an iterable object
+
+we can use the range function to create the range objects
+
+the range function
+range(end)
+range(start,end)
+range(start,end,step)
+
+
+---------------------------------------------------------------------------------------------------------------------
+For loops
+
+syntax : 
+for x in ['a','b']:
+	y= x + x
+	print(y)
+print('done')
+
+the enumerate function :
+enumerate is a function that 
+	-> takes an iterable argument
+	-> returns a new iterable whose elements are a tuple consisting of :
+		-> the index number of the original element
+		-> the original element itself
+		
+syntax:
+	data = [10,20,30,-10,40,-5]
+for t in enumerate(data):
+	print(t)
+
+each iteration t is a tuple (index,element)
+it can be unpackaed
+
+final syntax : 
+for index,element in enumerate(data):
+	if element < 0:
+		data[index] = 0	
+---------------------------------------------------------------------------------------------------------------------
+code (first one is better)
+
+data = [10.5, 11.2, 9.8, None, 11.5, None]
+
+count = 0
+total = 0
+for i in range(len(data)):  # note how I do not "hard-code" the range, but base it on len(data)
+    if data[i] is not None:
+        count += 1
+        total += data[i]
+average = total / count
+    
+for i in range(len(data)):
+    if data[i] is None:
+        data[i] = average
+        
+print(data)
+
+------------------------------------------------------
+
+data = [10.5, 11.2, 9.8, None, 11.5, None]
+
+count = 0
+total = 0
+for val in data:
+    if val is not None:
+        count += 1
+        total += val
+average = total/count
+
+for i, val in enumerate(data):
+    if val is None:
+        data[i] = average   
+        
+print(data)
+		
+---------------------------------------------------------------------------------------------------------------------
+While loops
+
+
+repeat some code as long as some condition is True
+non deterministic
+
+syntax : 
+while expr:
+	<code block>
+-> expr is evaluated at the start of each iteration
+
+
+---------------------------------------------------------------------------------------------------------------------
+Continue, Break , and else 
+
+
+skipping an iteration but without terminating the loop
+Continue
+
+early termination :
+break
+loops can be excited early(before all elements have been iterated)
+
+the else Clause
+-> python is really confusing here
+-> for loops can have an else Clause
+	-> but it has nothing to do with the else clause of an if statement
+the else clause of a for loop executes if and only if no break was encountred
+read it 'else if no break'
+
+for i in range(5):
+	<code block 1>
+else: #if no break
+	<code block 2>
+	
+---------------------------------------------------------------------------------------------------------------------
+Next Session
+
+Dictionaries
+
+most important data structures in python 
+
+
+
+associating two things together is extremely useful
+variable name is associated with some object
+
+objects are also dictionaries
+properties are also symbols associated to some value (object)
+methods are names associated to some function 
+
+
+---------------------------------------------------------------------------------------------------------------------
+Associative arrays and dictionaries
+
+
+Hash Maps (aka Dictionaries)
+
+a dictionary is a data structure that associates a value to a key
+both value and key are python objects
+key must be hashable type(eg. str,int,bool,float...) and unique  !!! u can use hash function to know if the key is hashable or not !!
+value can be any type
+type is dict
+it is a collection of key:value pairs
+it is iterable
+it is mutable collection
+
+creating dictionaries using literals
+d = {'a':97,'b':98,'A':65,'B':66,'z':122,'Z':90}
+
+how to look up values in a dictionary
+d['a'] = 97
+
+adding a new key:value pair
+if key exist , it will be updated 
+if does not exist , a new entry is inserted with key and value
+!!!! that's why keys in a dictionary are necessarily unique
+d['open'] = 277.14
+
+deleting a key:value pair
+del d['open']
+
+---------------------------------------------------------------------------------------------------------------------
+iterating dictionaries
+
+for loop to iterate over what we choose keys or values or key:value pairs 
+
+data = {'a':1,'b':2,'c':3}
+
+return keys
+for k in data:
+	print(k)
+or iterate through data.keys()
+
+return values :
+for v in data.values():
+	print(v)
+	
+return key:value pairs as tuple
+for t in data.items():
+	print(t)
+-> ('a',1)
+   ('b',2)
+   ('c',3)
+   
+remember unpacking ?
+for k,v in data.items()
+	print(f'{k}={v}')
+-> a = 1
+   b = 2
+   c = 3
+   
+!!!!!! not every iterable has positional order
+	we can pull marbles out of a bag, but there is no particular order
+	
+---------------------------------------------------------------------------------------------------------------------
+working with dictionaries
+
+membership testing : 
+d = {'a':1,'b':2}
+'a' in d -> True
+
+useful methods and functions:
+d.clear()   -> removes all elements
+d.copy()    -> return a shallow copy
+		same as sequences 
+		use copy.deepcopy() to create a deep copy
+len(d)		-> returns the number of elements in d 
+
+other methods to create dictionaries
+d = {'a':1,'b':2}
+d = dict(a=1,b=2)
+
+can create a dictionary with several keys all initialized to the same value
+	d = dict.fromkeys(['cnt_1','cnt_2','cnt_3'],0)
+	d -> {'cnt_1':0,'cnt_2':0,'cnt_3':0}
+	
+creating empty dictionaries 
+d = {}
+use dict function : d = dict()
+
+the get() method 
+d = {'length':10,'width':20}
+d.get('length',0) -> 10
+
+returns 0 if key does not exist
+d.get('height',0) -> 0
+
+d.get('height') -> None
+
+merging two dictionaries into another
+update() method
+
+d1.update(d2)
+
+use deepcopy() only if the dictionary has mutable objects !! 
+
+---------------------------------------------------------------------------------------------------------------------
+next session
+
+Sets
+
+
+what are sets ?
+a collection of elements
+no ordering to the elements
+each element is unique
+
+it is iterable 
+but no guarantee on what the iteration order will be
+
+it like a bag of marbles(a collection of marbles)
+to iterate you reach in the bag and grab a marble(any marble)
+continue doing so until the bag is empty
+no order guaranteed
+each marble was unique
+
+---------------------------------------------------------------------------------------------------------------------
+python sets
+
+think back to keys in a dictionary
+
+they are unique
+they are iterable
+they have no particular order    !!!!!s= set('python') -> {'h', 'n', 'o', 'p', 't', 'y'}
+keys can be added or removed
+they are hashable too - but leave that aside for a moment
+
+----------> we can think of the keys in a dictionary as a set
+
+type is set
+are iterable
+iteration order is not guaranteed
+set elements must be hashable 
+sets are mutable
+
+defining sets:
+literal form:
+{1,'a',True}
+
+we can use the set() function
+
+empty set ! use set()
+
+---------------------------------------------------------------------------------------------------------------------
+common set operations
+
+disjointedness:
+two sets are disjoint if they have no elements in commmon
+
+s1.isdisjoint(s2)	
+	-> True if no common elements exist 
+	
+adding or removing an element
+s.add()
+s.remove('b')
+keyerror if elements does not exist
+s.discard(4)
+s.discard() no exception if element not exist
+
+Subset and Supersets
+< <= > >=
+
+Union and intersection 
+s1 | s2 -> union
+s1 & s2 -> intersection
+
+set difference
+s1 - s2 
+means s1 - intersection
+s1 = {1,2,3}
+s2 = {3,4,5}
+s1 - s2 = {1,2}
+s2 - s1 = {4,5}
+
+
+!!!!!!!!! memebership testing with sets is much faster than lists or tuples
+easy to eliminate duplicate values from a collection 
+easy to find common values between two collections
+easy to find values in one collection but not in another
+
+
+---------------------------------------------------------------------------------------------------------------------
+comprehensions
+
+are an easy way to create new iterables from other iterables 
+
+---------------------------------------------------------------------------------------------------------------------
+List comprehensions
+
+different types of comprehensions :
+lists
+dictionaries
+sets
+generators
+
+List comprehensions :
+is used to generate a list object
+example:
+
+numbers = (1,2,3,4,5)
+sq = [number ** 2 for number in numbers]
+
+comprehension syntax supports an if clause :
+evens = [number for number in numbers if number%2==0]
+
+---------------------------------------------------------------------------------------------------------------------
+Dictionary and set comprehensions
+
+use {} instead of []
+
+widgets = ['widget1','widget2','widget3','widget4']
+sales = [10,5,15,0]
+d = {
+	widgets[i] : sales[i]
+	for i in range(len(widgets))
+	if sales[i] > 0
+}
+
+set comprehensions
+
+numbers = [1,1,2,2,3,3,4,4,5,5,6,6]
+
+s = {number **2
+	for number in numbers 
+	if number %2 ==0
+}
+
+---------------------------------------------------------------------------------------------------------------------
+Exceptions
+
+exceptions are special events that happens when something out of the ordinary happens while our code is running
+
+an exception is not necessarily an error
+
+but unhandled exceptions will cause our program to terminate
+
+an exception is a special type of objects in python
+
+raising -> starting an exception event flow
+
+exception handling -> interacting with an exception flow in some manner
+
+unhandled exception -> an exception flow that is not handled by our code
+
+exception Hierarchy : (look at OOP)
+IndexError exception is a LookupError exception and it is also an Exception exception
+
+EAFP vs LBYL
+
+when we think something unexpected may go wrong in our code
+figure out if something is going to wrong before we do it
+-> LBYL Look Before You Leap
+
+just do it, and handle the exception if it occurs
+-> EAFP Easier to Ask Forgiveness than Permission
+
+generally in python ---> follow EAFP
+		    ---> exception handling
+		    
+Why EAFP?
+Something that is exceptional should be infrequent
+	if we are dividing two integers in a loop that repeats 1,000 times
+		out of every 1,000 times we run, we expect division by zero to occur 5 times
+			LBYL -> test that divisor is non zero 1,000 times
+			
+			EAFP -> just do it, and handle the division by zero error 5 times
+			
+Exception handling flow :
+-> an exception occurs
+	-> an exception object is created
+	-> an exception flow is started
+	
+	-> we do nothing about it
+		-> program terminates
+	-> we intercept the exception flow
+		-> try to handle the exception in some sense, if possible
+		-> then 
+			-> resume running program uninterrupted
+			-> or let the exception resume
+			-> or start a new exception flow
+			
+---------------------------------------------------------------------------------------------------------------------
+raising Exceptions
+
+raising an exception means starting an exception flow
+
+built-in exceptions:
+ex = ValueError('message')
+then we raise the exception
+raise ex
+raise ValueError('custom message')
+
+---------------------------------------------------------------------------------------------------------------------
+handling Exceptions
+
+how we do exception handling :
+try...except...
+wrap the code we want to implement an exception handler for inside a try block
+
+a = 1 
+b = 0
+try:
+	result = a / b
+except ZeroDivisionError as ex:
+	print(f'Exception occurred: {ex}')
+	result = 0
+print(result)
+
+
+common case for re-rasing exceptions is for error logging
+we can view the logs after our program has terminated abnormally
+
+try:
+	...
+except Exception as ex :
+	log(ex)
+	raise
+	
+raise it again means 'something else handles it'?
+(we'll see this more when we cover functions)
+
+handling multiple exception Types:
+try:
+	...
+except IndexError as ex:
+	...
+except ValueError as ex:
+	...
+except Exception as ex :
+	...
+------> from most specific to least specific exception types
+
+the finally clause
+try:
+	...
+except ValueError as ex:
+	...
+except IndexError as ex:
+	...
+finally:
+	# always runs no matter what, before exception flow resumes
+------> common usecase : database connection(handle and close connections)
+
+
