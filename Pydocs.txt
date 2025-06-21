@@ -1027,3 +1027,9 @@ the iterator has a special method called __next__() that can be called to get th
 lists , tuples , string , dictionaries , sets , range objects are iterables 
 but some objects in python are iterators not iterables 
 
+---------------------------------------------------------------------------------------------------------------------
+Generators
+
+
+
+
