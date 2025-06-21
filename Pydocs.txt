@@ -988,4 +988,42 @@ finally:
 	# always runs no matter what, before exception flow resumes
 ------> common usecase : database connection(handle and close connections)
 
+---------------------------------------------------------------------------------------------------------------------
+Iterables and iterators intro
+
+an iterable is something that can be iterated over
+we can take one element , then the next then the next until we've covered all elements
+no specific iteration order is mandated
+
+sequence type is iterable
+-dictionaries can be iterated over (insert order)
+-but we also so sets: iterable, but no guaranted order of any kind
+------> general idea behind iteration is then:
+	-start somewhere in the collection
+	-keep requesting the next element
+	-until there's nothing left(exhausted)
+
+two concepts:
+	a collection of objects that we can iterate over
+		an iterable
+	something that is able to give us the next element when we request it
+		an iterator
+
+---------------------------------------------------------------------------------------------------------------------
+Iterables and iterators 
+
+an iterable is something that can be iterated over
+
+the iterator is used by python to iterate over an iterable
+
+iterables implement a special method __iter__() that returns a new iterator
+	-can also be called by using the iter() function
+	
+the iterator has a special method called __next__() that can be called to get the next element
+	-can also use the next function next()
+	-it keep track of what it has already handed out
+	-it raises a StopIteration exception when next() is called if there's nothing left
+
+lists , tuples , string , dictionaries , sets , range objects are iterables 
+but some objects in python are iterators not iterables 
 
