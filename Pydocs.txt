@@ -1052,4 +1052,56 @@ this is not a comprehension its a generator object
 		-a lazy property is one that is not calculated until it is requested
 Why use Generators ?
 	-memory efficiency
+	
+	
+---------------------------------------------------------------------------------------------------------------------
+Functions
 
+when we define a function we may define symbols for the values that will be passed to the function -----------> these symbols are called parameters
+
+
+when we call a function we specify values for these parameters  -------------> these values are called arguments
+
+- so a parameter is when we define the function
+- an argument is when we call the function
+
+Function are python objects
+they have state
+they are callable -> and always return something when called 
+
+what is callable , it can be called using ()
+can be a method , class , function, ....
+
+---------------------------------------------------------------------------------------------------------------------
+Custom Functions
+
+defined using the def keyword
+def function_name():
+	#indented block
+	...
+	return <value>
+	
+-------> this creates a function object
+-------> the function object is associated with the symbol function_name
+
+
+def say_hello():
+	print('Hello!')
+	
+but no return?
+if a return value is not specified, function will return None
+
+
+Namespaces:
+when a function is called
+	it knows nothing about how it was called before
+	every time a function is created
+		an empty dictionary is created 
+		populated with any arguments passed in
+			->key= param name, value = argument
+			-> nothing else
+		then the function code runs
+		-> this dictionary is called the (local) namespace
+		once the function has finished running , dictionary discarded .
+
+-------------> each time a function is called, a new namespace is created that holds all of the variables for that one specific run of the function.and those variables are stored in a dictionary(not globals its locals)	
