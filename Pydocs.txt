@@ -1028,8 +1028,28 @@ lists , tuples , string , dictionaries , sets , range objects are iterables
 but some objects in python are iterators not iterables 
 
 ---------------------------------------------------------------------------------------------------------------------
-Generators
+Generators  (lazy iterators --- one time use)
 
 
 
+we've seen list dictionary and set comprehensions
+but no tuple comprehensions
+
+[i**2 for i in range(5)]
+
+works because list are mutable
+tuples are not mutable
+no tuple comprehension
+
+
+(i**2 for i in range(5))
+this is not a comprehension its a generator object
+	-generators are iterators -> next()
+	-they calculate and hand out elements one at a time as requested
+	- unlike [i ** 2 for i in range(5)]
+		-calculates all the elements and creates the list immediately
+	-generators use lazy iteration
+		-a lazy property is one that is not calculated until it is requested
+Why use Generators ?
+	-memory efficiency
 
