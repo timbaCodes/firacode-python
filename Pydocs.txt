@@ -1105,3 +1105,10 @@ when a function is called
 		once the function has finished running , dictionary discarded .
 
 -------------> each time a function is called, a new namespace is created that holds all of the variables for that one specific run of the function.and those variables are stored in a dictionary(not globals its locals)	
+
+
+---------------------------------------------------------------------------------------------------------------------
+Star Arguments
+
+
+
