@@ -1111,4 +1111,44 @@ when a function is called
 Star Arguments
 
 
+what if we wanted to specify an arbitrary number of parameters?
+average(1)
+average(1,2,3)
+average(1,2,3,4)
+
+we can wright a function to use an iterable as a single argument
+def average(iterable):
+	return sum(iterable) / len(iterable)
+but this make the calling syntax little weird
+
+Python supports a special parameter type for this :
+uses a *prefix on parameter name
+def average(*values):
+	# return average
+	
+often you will see code that uses *args
+args is often too generic
+
+def my_func(*args):
+    print(type(args))
+    print(args)
+my_func()
+-> <class 'tuple'>
+()
+
+def product(*values):
+    if len(values) == 0:
+        raise ValueError('Must provide at least one argument')
+    prod = 1
+    for v in values:
+        prod *= v
+    return prod
+l = [1,2,3,4]
+product(*l)
+here python unpack the iterable and do the job
+
+---------------------------------------------------------------------------------------------------------------------
+default values
+
+
 
