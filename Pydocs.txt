@@ -1151,4 +1151,15 @@ here python unpack the iterable and do the job
 default values
 
 
+def func(a=1):
+	print(a)
 
+if you don't pass anything for a 
+print 1 out
+func() ->1
+func(10)-10
+
+once you specify a positional parameter with a default value
+	-> all positional parameters after that must specify default value too
+		->with the exception of a starred parameter
+		
