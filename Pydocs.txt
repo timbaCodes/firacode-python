@@ -1163,3 +1163,41 @@ once you specify a positional parameter with a default value
 	-> all positional parameters after that must specify default value too
 		->with the exception of a starred parameter
 		
+		
+---------------------------------------------------------------------------------------------------------------------
+keyword only arguments
+
+
+can also make passing an argument by name mandatory
+	-> these are called keyword arguments
+keyword only arguments must come after all positional parameters 
+
+def func(a,b,c):
+we want c to always be passed as a named argument
+somehow we have to tell python that after a and b there are no more positional arguements
+
+-> one way is to use *parameter
+def func(a,b,*args,c)
+->since *args will scoop up every remaining positional argument
+-> c must be a keyword-only argument
+
+func(10,20,30,c=100)
+
+
+def func(a,b,*,c)
+	...
+-> a and b are positional parameters
+-> there are no more positional parameters after that
+-> so c is a keyword-only argument
+
+Arbitrary Number of Keyword-only Parameters
+-> saw * for arbitrary number of positional arguments
+-> use ** for arbitrary number of keyword-only arguments
+
+func(a,b,*args,c,d,**kwargs)
+
+a and b are positional 
+c and d are keyword only
+extra positional arguments are scoped up into args
+extra named arguments are scooped up into kwargs
+
