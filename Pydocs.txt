@@ -1238,4 +1238,39 @@ round(x,2) -> rounds to nearest 0.01
 round(x,-1) -> rounds to nearest 10
 round(x,-2) -> rounds to nearest 100
 
+---------------------------------------------------------------------------------------------------------------------
+Sorted , min , max
 
+sorting numbers :
+ascending or descending 
+sorted is a built in function
+kwargs reverse True or False to reverse order
+always return a new list
+original iterable is not mutated
+
+t=(1,10,2,9,3,8)
+sorted(t)
+	-> [1,2,3,8,9,10]
+sorted(t,reverse=True)
+
+sorting strings:
+lexicographic order
+	dictionary order, alphabetical order
+A -> 65    Z -> 90
+a -> 97    z -> 122
+'A' < 'Z' < 'a' < 'z'
+
+min and max :
+to find the minimum of a collection
+- sort the collection (by something) in ascending order
+- pick the first element
+
+min([1,10,2,9,3,8]) -> 1
+max([1,10,2,9,3,8]) -> 10
+min([]) -> ValueError exception
+
+min([],default=0) -> 0
+
+min(1,10,2,9,3,8) -> 1
+max(1,10,2,9,3,8) -> 10
+same thing
