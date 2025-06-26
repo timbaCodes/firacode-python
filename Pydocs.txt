@@ -1201,3 +1201,41 @@ c and d are keyword only
 extra positional arguments are scoped up into args
 extra named arguments are scooped up into kwargs
 
+---------------------------------------------------------------------------------------------------------------------
+Lambda functions (anonymous functions)
+
+are just functions
+they are not defined using def and a block of code 
+it is an expression that returns a function object
+
+lambda a , b : a + b
+this return a function object
+we need to assign it to a symbol if we want to use it 
+f = lambda a , b : a + b
+f(10,20) -> 30 
+
+
+---------------------------------------------------------------------------------------------------------------------
+Some additional functions
+
+--> https://docs.python.org/3/library/functions.html
+
+---------------------------------------------------------------------------------------------------------------------
+round()
+
+round()    built in function that can be used to round floats
+
+ties round to closest even digit 1.5->2
+				 2.5->2
+				 
+can also use round() to round to closest multiple of 1/10
+round( value , exponent )
+exponent is used to specify what power of 1/10 to round to 
+-> let's look at it mathematically first (ie.without worrying about float representations)
+
+round(x,1) -> rounds to nearest 0.1
+round(x,2) -> rounds to nearest 0.01
+round(x,-1) -> rounds to nearest 10
+round(x,-2) -> rounds to nearest 100
+
+
