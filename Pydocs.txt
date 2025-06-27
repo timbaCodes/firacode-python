@@ -1290,3 +1290,38 @@ list(combo)->[]
 if you want to iterate multiple times over the same zipped collection
 	store it into a list
 	combo = list(zip(l1,l2))
+	
+---------------------------------------------------------------------------------------------------------------------
+Higher order functions
+
+functions are objects
+functions can be passed to and or returned from functions
+these are called higher order functions
+
+
+---------------------------------------------------------------------------------------------------------------------
+Passing and returning functions
+
+passing functions as arguments
+	the object is passed , not called 
+		so don't use () to pass a function, that would pass the result of the function!
+		def add(a,b):
+			return a + b 
+		def apply(func,a,b):
+			result = func(a,b)
+			return result
+		apply(add,2,3)
+		
+Nested functions
+function bodies can contain any valid python code
+including defining functions
+
+returning functions:
+def identity(func):
+	return func
+def add(a,b):
+	return a + b
+f = identity(add)
+f(2,3) -> 5
+
+
