@@ -1324,4 +1324,19 @@ def add(a,b):
 f = identity(add)
 f(2,3) -> 5
 
+---------------------------------------------------------------------------------------------------------------------
+Map
 
+the map() function calls a specified function for every element of some iterable
+very similar to doing something like this : 
+def my_map(func,iterable):
+	result = [func(element) for element in iterable]
+	return result
+	
+here we are creating a list that contains the function func applied to every element of iterable
+but it creates a list
+can take a lot of space if iterable is large
+especially wasteful if we don't iterate over all the values
+
+map() returns an iterator
+iterator = map(func,iterable)
