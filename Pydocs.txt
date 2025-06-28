@@ -1340,3 +1340,21 @@ especially wasteful if we don't iterate over all the values
 
 map() returns an iterator
 iterator = map(func,iterable)
+
+
+---------------------------------------------------------------------------------------------------------------------
+Closures
+
+def outer(a,b):
+	c=100
+	
+	def inner():
+		...
+	return inner
+	
+----> inner can see those variables
+	it even retains these variables when it returned
+	the inner function can capture those variables
+		this is called a closure
+		
+
