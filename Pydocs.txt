@@ -1357,4 +1357,195 @@ def outer(a,b):
 	the inner function can capture those variables
 		this is called a closure
 		
+---------------------------------------------------------------------------------------------------------------------
+Sorting and filtering
+
+
+sorting iterables
+filtering iterables
+
+---------------------------------------------------------------------------------------------------------------------
+Filtering
+
+a predicate function is simply a function of one or more arguments that returns True or False.
+
+def is_positive(x):
+	return x > 0
+------> a predicate function
+
+python has a filter function that works exactly that way:
+
+filter(pred,iterable)
+
+def is_positive(x):
+	return x > 0
+	
+filter(is_positive, data)
+-> lazy iterator
+-> can only iterate through this once
+-> 1,2,3
+
+can also use a predicate function created via a lambda
+is_positive = lambda x : x > 0
+filter(is_positive,data)
+
+-> and often , directly inline with the call to filter:
+filter(lambda x :x >0 , data)
+
+---------------------------------------------------------------------------------------------------------------------
+Sorting
+
+Sorted([10,9,3,1,2,8]) -> 1, 2, 3, 8, 9, 10
+sorting strings is more complicated
+
+sort based on what
+
+how do we sort by a different criteria
+
+data = [3, 1, -6, -2, -4, 5]
+
+def sort_key(x):
+	return abs(x)
+	
+sorted(data, key=sort_key)
+sorted(data, key=lambda x : abs(x))
+
+
+data = {'a' : 300 , 'b' : 100 , 'c' : 200}
+sort the keys of the dictionary based on the corresponding value
+
+sorted(data.keys() , keys = lambda k : data[k])
+-> ['b','c','a']
+
+---------------------------------------------------------------------------------------------------------------------
+Min and Max
+
+min(iterable, key=<func>)
+max(iterable, key=<func>)
+
+data = [-1,2,-3,4,-5]
+min(data) -> -5
+max(data) -> 4
+sort based on the absolute value:
+min(data,key=abs) -> -1
+max(data,key=abs) -> -5
+
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+Decorators
+
+a form of metaprogramming
+they allow to wrap functionality around an already defined function
+
+example :
+fun1, fun2, fun3 etc
+every time one of those functions are called , we want to produce a log
+	print to console that function is called
+	
+we can put the logging functionality inside each function
+
+repeating the same code multiple times
+each time we modify the log 
+
+instead we want to write the logging code once
+basically we want to build a second function that will:
+	run some code
+		execute the original function with the arguments that werepassedin
+		run some code
+		return the result of the call
+		
+fun1(10,20) -> start timing
+	    -> result = fun1(10,20)
+	    -> stop timing
+	    -> log call, date/time and timing
+	    -> return result
+
+fun2(10) -> start timing
+	    -> result = fun2(10)
+	    -> stop timing
+	    -> log call, date/time and timing
+	    -> return result
+	    
+---------------------------------------------------------------------------------------------------------------------
+Decorators
+
+def outer(fn):
+	def inner():
+		print(f'Calling {fn}...')
+		result = fn()
+		return result
+	return inner
+	
+f = outer(fun1)
+f = outer(fun2)
+f = outer(fun3) 
+
+cc:
+
+def log(fn):
+	def inner(*args,**kwargs):
+		print(f'Calling {fn}...')
+		result = fn(*args,**kwargs)
+		return result
+	return inner
+	
+def add(x,y):
+	return x+y
+def greet(name):
+	return f'Hello {name}!'
+	
+add_logged = log(add)
+greet_logged = log(greet)
+
+remember that python is a dynamic language
+we can reassign any object to any symbol
+instead of : add_logged = log(add)
+how about : add = log(add)
+
+the basic decorator pattern 
+
+def wrapper(func):
+	def inner(*args,**kwargs):
+		#some code here
+		result = func(*args,**kwargs)
+		# some code here
+		return result
+	return inner
+
+def func(a,b):
+	...
+func = wrapper(func)
+	-> wrapper is called a decorator
+	
+there is a shorthand notation!
+@wrapper
+def func(a,b):
+	...
+-> exactly same as above
+def func(a,b):
+	...
+func = wrapper(func)
+
+---------------------------------------------------------------------------------------------------------------------
+LRU Caching(application of decorators)
+
+it solves the following problem
+the same set of arguments are used often
+the function is deterministic 
+
+python has such a decorator the lru_cache decorator
+LRU -> Least Recently Used
+-> caches should not grow indefinitely
+so keep the n most recent 
+
+from functools import lru_cache
+
+@lru_cache(maxsize=20)
+def my_func(a,b):
+	...
+	
+-> uses a decorator
+-> this decorator can also take arguments
+-> there is a restriction
+
 
