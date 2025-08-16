@@ -1548,4 +1548,91 @@ def my_func(a,b):
 -> this decorator can also take arguments
 -> there is a restriction
 
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+Text Files
 
+open text files 
+read data from them
+write data to them
+
+close file when we're done
+	a mechanism
+	context manager
+a context is an area of code that is entered and exited
+it is entered by calling a context manager using with statement
+it is exited when the with code block is exited
+
+
+---------------------------------------------------------------------------------------------------------------------
+Reading Text Files
+
+how to open files?
+open(file_path)
+open(file_path,mode)
+-> r : read-only(default)
+-> w : write-only, create new file, or overwrite if it exists
+-> a : write-only, create new file, or append if it exists
+
+what is returned by open()?
+an object that has many methods and properties
+-> readlines()
+-> closed  -> is file closed?
+-> close() -> this allows us to close the file after we're done with it
+
+but it is also an iterator
+	->provides iteration over the individual lines in the text file
+	
+
+
+how to close files?
+
+always close a file after you're done with it
+	releases the resource(not unlimited number of open files)
+	writes are often buffered until the file is closed
+	
+f = open('file path','w')
+f.close()
+
+what happen if an exception occurs while the file is open?
+use a try...finally... to always close the file,no matter what
+
+f = open('file path','w')
+try:
+	#write to file
+finally:
+	f.close()
+--------------> first approach
+
+
+open() as a Context Manager
+-> open() is also a context manager
+
+with open('file_path','w') as f:
+	#write to file
+-> as soon as the context exits, file is closed
+	-> even if an unhandled exception occurs in context block
+	
+	
+---------------------------------------------------------------------------------------------------------------------
+Writing Text Files
+
+-> same principle as reading text files
+	->open file (in write mode)
+		->write to file
+	->close file
+		->especially important to write, since changes may be lost otherwise
+
+-> but best is to use context manager
+
+Write modes:
+w   
+creates file if it does not exist
+overwrites(clear out) file if it already exists
+
+a
+creates file if it does not exist
+appends to end of file if it already exits
+
+f.write(<some string>)
+f.writelines(<iterable of strings>)
